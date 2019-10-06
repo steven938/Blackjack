@@ -1,14 +1,14 @@
 /**
- * The Card class represents a playing card.
+ * The Card class represents a individual playing card such as Ace of Hearts.
  * @author StevenChen
  */
 
 public class Card {
 
-    // Define some static constants for int representations
+    // Definition for some static constants for int representations
     public final static int ACE = 1, JACK = 11, QUEEN = 12, KING = 13;
 
-    // Define the four suits
+    // Definition for 4 suits for style
     enum Suit
     {
         SPADE, CLUB, DIAMOND, HEART;
@@ -17,13 +17,13 @@ public class Card {
     private int val;
     private Suit suit;
 
-    // Constructing the card
+    // Constructor
     Card(int faceValue, Suit suit) {
         this.val = faceValue;
         this.suit = suit;
     }
 
-    // Returns the int representation of the face value
+    // Returns int of face value
     int getVal() {
         return val;
     }

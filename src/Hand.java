@@ -8,15 +8,15 @@ import java.util.List;
 
 public class Hand {
 
-    private List<Card> currHand;
+    private List<Card> cardList;
 
     Hand() {
-        this.currHand = new ArrayList<Card>();
+        this.cardList = new ArrayList<Card>();
     }
 
     // Add a card to a hand
     void addCard(Card c) {
-        currHand.add(c);
+        cardList.add(c);
     }
 
     // Checks if a hand has Blackjack
@@ -24,7 +24,7 @@ public class Hand {
         return (getOptimalValue() == 21);
     }
 
-    // Returns optimal value for the hand
+    // Returns the value closest to 21 such that it does not exceed 21
     int getOptimalValue() {
         if (getValueOneAceAsEleven() > 21) {
             return getMinValue();
@@ -35,13 +35,13 @@ public class Hand {
 
     // Get a particular card in the hand
     Card getCard(int i) {
-        return currHand.get(i);
+        return cardList.get(i);
     }
 
     // Get the value of the hand with all Aces counting as 1.
     private int getMinValue() {
         int ret = 0;
-        for (Card c : currHand) {
+        for (Card c : cardList) {
             // Aces count as 1 in this case
             if (c.getVal() == 1) {
                 ret += 1;
@@ -59,7 +59,7 @@ public class Hand {
     private int getValueOneAceAsEleven() {
         int ret = 0;
         boolean foundOne = false;
-        for (Card c: currHand) {
+        for (Card c: cardList) {
             // Aces count as 11 in this case
             if (c.getVal() == 1) {
                 if (foundOne) {
@@ -80,7 +80,7 @@ public class Hand {
     @Override
     public String toString() {
         String ret = "";
-        for (Card c : currHand) {
+        for (Card c : cardList) {
             ret += c.toString() + ", ";
         }
         return ret.replaceAll(", $", "");
